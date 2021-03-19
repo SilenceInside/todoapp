@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block todo %}
+
+  {% verbatim %}
+    <div id="app" class="container">
+
+      <div class="mb-5">
+        <form @submit.prevent="createTask" class="">
+          <label class="form-label">Add New Task</label>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="New Task" v-model="task">
+            <button class="btn btn-primary" type="submit">Add</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="">
+        <ul class="list-group"
+            v-for="(task, index) in tasks"
+             @click="completeTask(task.id, index)"
+             :class="{'text-decoration-line-through': task.done}">
+          <li class="list-group-item">
+            {{ task.title }}
+            <button class="btn btn-close btn-sm float-end" @click.stop="deleteTask(task.id, index)"></button>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  {% endverbatim %}
+
+{% endblock %}

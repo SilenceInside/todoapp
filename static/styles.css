@@ -1,0 +1,10 @@
+body {
+    margin: auto;
+}
+ul {
+    list-style: none;
+}
+
+.done {
+    text-decoration: line-through;
+}
